@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bibtex"
+dynamic = ["version", "dependencies"]
+authors = [
+  { name="Anders", email="anbae@mmmi.sdu.dk" },
+]
+description = "Bibtex Validator is a Python package for validating BibTeX files. It checks for syntax errors, missing fields, and other common issues in BibTeX entries."
+readme = {file = "README.md", content-type = "text/markdown"}
+requires-python = ">=3.13"
+classifiers = [
+    "Intended Audience :: Personal use",
+    "Topic :: Software Development :: Build Tools",
+
+    "License :: OSI Approved :: MIT License",
+    
+    "Operating System :: OS Independent",
+    
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+
+]
+license = {file = "LICENSE"}
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}
+version = {file = ["VERSION"]}
+
+[project.optional-dependencies]
+dev = [
+    "black", 
+    "isort",
+]
+
+test = [
+    "pytest"
+]
+
+[project.urls]
+Homepage = "https://github.com/anbaephd"
+Repository = "https://github.com/anbaephd/bibtex-validator"
+Issues = "https://github.com/anbaephd/bibtex-validator/issues"
