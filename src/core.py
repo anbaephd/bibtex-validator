@@ -70,18 +70,18 @@ class BibFile:
             f.write("\n\n".join([str(i) for i in self.entries]) + "\n")
 
     def remove_bib_field(self, field_key: str, entry_type: str = None) -> None:
-        entries = []
         for entry in self.entries:
+
             if entry_type is not None and entry.type != entry_type:
-                entry.fields
+                continue
+            elif entry_type is not None and entry.type == entry_type:
+                entry.fields = [
+                    field for field in entry.fields if field.key != field_key
+                ]
             else:
                 entry.fields = [
                     field for field in entry.fields if field.key != field_key
                 ]
-
-            entries.append(entry)
-
-        self.entries = entries
 
     def get_stats(self) -> Counter:
         x = [
