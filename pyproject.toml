@@ -25,6 +25,9 @@ classifiers = [
 ]
 license = {file = "LICENSE"}
 
+[project.scripts]
+bibtex-clean = "bibtex.cli:main"
+
 [tool.setuptools.dynamic]
 dependencies = {file = ["requirements.txt"]}
 version = {file = ["VERSION"]}
@@ -36,8 +39,16 @@ dev = [
 ]
 
 test = [
-    "pytest"
+    "pytest",
+    "pytest-cov",
 ]
+
+[tool.pytest.ini_options]
+addopts = "--cov=bibtex --cov-report=term-missing --cov-fail-under=90"
+testpaths = ["tests"]
+
+[tool.coverage.run]
+source = ["src"]
 
 [project.urls]
 Homepage = "https://github.com/anbaephd"
